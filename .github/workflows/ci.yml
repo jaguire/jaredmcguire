@@ -4,44 +4,62 @@ on:
   push:
     branches:
       - main
-      - master
-  pull_request: {}
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: ci-${{ github.head_ref || github.ref }}
-  cancel-in-progress: true
+  group: ci
+  cancel-in-progress: false
 
 jobs:
-  lint:
-    name: "Lint"
+  build:
+    name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Install Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22.18.0
           cache: npm
+
       - name: Install Dependencies
         run: npm ci
+
       - name: Lint
         run: npm run lint
 
-  test:
-    name: "Test"
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build -- -prod
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    name: Deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
+    needs: build
     steps:
-      - uses: actions/checkout@v3
-      - name: Install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
-      - name: Run Tests
-        run: npm test
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
