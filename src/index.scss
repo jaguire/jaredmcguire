@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Lexend:wght@100..900&display=swap');
+
+:root {
+  --background: #22242a;
+  --foreground: #fff;
+  --accent-primary: #0c6;
+  --accent-secondary: #ff014f;
+  --accent-tertiary: #ca0;
+  --border-radius: 5px;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  margin: 0;
+  font: 1.8rem/1.8 'Lexend', sans-serif;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+a.button {
+  cursor: pointer;
+  display: inline-block;
+  background-color: var(--accent-secondary);
+  border-radius: var(--border-radius);
+  color: var(--foreground);
+  text-align: center;
+  text-transform: uppercase;
+  padding: .5rem 2rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+site-logo {
+  color: var(--accent-tertiary);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 4rem;
+  margin: 0 3rem;
+
+  span {
+    font-size: 120%;
+  }
+}
+
+img.img-left {
+  border-radius: var(--border-radius);
+  float: left;
+  margin-right: 5rem;
+}
+
+img.img-right {
+  border-radius: var(--border-radius);
+  float: right;
+  margin-left: 5rem;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  background: var(--background);;
+  width: 100%;
+  box-shadow: 0 1rem 1rem .2rem #0003;
+
+  nav {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    a {
+      color: var(--foreground);
+      text-transform: uppercase;
+      padding: 2rem;
+
+      &:hover {
+        color: var(--accent-primary);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+section {
+  padding: 5rem 0;
+
+  section-content {
+    display: block;
+    margin: 0 auto;
+    width: 100rem;
+  }
+
+  h1 {
+    color: var(--accent-primary);
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  &#iona {
+    img {
+      border: .2rem solid var(--foreground);
+    }
+
+    h1 {
+      color: var(--accent-tertiary);
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 8rem;
+      font-weight: normal;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 0;
+
+      &::first-letter {
+        font-size: 130%;
+      }
+    }
+  }
+
+  &.inverse {
+    background-color: var(--foreground);
+    color: var(--background);
+
+    h1 {
+      color: var(--accent-secondary);
+    }
+  }
+}
+    //backdrop-filter: blur(10px);
