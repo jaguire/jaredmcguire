@@ -1,14 +1,16 @@
-<site-logo>&nbsp;</site-logo>
-
 <header>
-  <site-logo><span>J</span>ared <span>M</span>c<span>G</span>uire</site-logo>
-  <nav>
-    <a href="/">Home</a>
-    <!-- <a href="/iona">Iona</a> -->
+  <site-logo><a href="/"><span>J</span>ared <span>M</span>c<span>G</span>uire</a></site-logo>
+  <nav aria-label="main">
+    <input type="checkbox" id="menuToggle" /><span></span><span></span><span></span>
+    <ul>
+      <li><label for="menuToggle"><a href="/">Home</a></label></li>
+      <li><label for="menuToggle"><a href="/iona">Iona</a></label></li>
+      <li><label for="menuToggle"><a href="/about">About</a></label></li>
+    </ul>
   </nav>
 </header>
 
-<content></content>
+<main></main>
 
 <section class="inverse">
   <section-content>
@@ -17,7 +19,7 @@
 </section>
 
 <footer>
-  <nav>
+  <nav aria-label="footer">
     <a href="/about">About</a>
     <a href="/ai">AI</a>
     <a href="/legal">Legal</a>

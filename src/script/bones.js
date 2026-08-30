@@ -42,9 +42,9 @@ const createPageLink = page => {
 const bones = await loadJson('/bones.json')
 // log.debug('config', bones)
 
-// get content
+// get main content
 const layout = document.querySelector('[data-layout]')
-const contentHtml = layout ? layout.innerHTML : console.error('BONES 🦴 layout is missing')
+const mainHtml = layout ? layout.innerHTML : console.error('BONES 🦴 layout is missing')
 
 // load layout
 layout.innerHTML = await loadHtml(`${bones.includesPath}${layout.dataset.layout}.html`)
@@ -53,9 +53,9 @@ layout.innerHTML = await loadHtml(`${bones.includesPath}${layout.dataset.layout}
 // await Promise.all([...layout.querySelectorAll('[data-include]')].map(async include =>
 //   include.innerHTML = await loadHtml(`${bones.includesPath}${include.dataset.include}.html`)))
 
-// restore content
-const content = layout.querySelector('content')
-content.innerHTML = content ? contentHtml : console.error('BONES 🦴 <content></content> is missing from the layout')
+// restore main content
+const main = layout.querySelector('main')
+main.innerHTML = main ? mainHtml : console.error('BONES 🦴 <main></main> is missing from the layout')
 
 // navigation
 // const headerNav = layout.querySelector('header nav')

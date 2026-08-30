@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Lexend:wght@100..900&display=swap');
 
+$breakpoint-large: 1040px;
+$breakpoint-medium: 740px;
+$breakpoint-small: 425px;
+
 :root {
   --background: #22242a;
   --foreground: #fff;
@@ -45,26 +49,60 @@ a.button {
 }
 
 site-logo {
-  color: var(--accent-tertiary);
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 4rem;
-  margin: 0 3rem;
+  margin-left: 3rem;
+  white-space: nowrap;
 
-  span {
-    font-size: 120%;
+  a {
+    display: block;
+    padding: 1rem 0;
+    color: var(--accent-tertiary);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 8vw;
+
+    @media (min-width: $breakpoint-small) {
+      font-size: 3.8rem;
+    }
+    @media (min-width: $breakpoint-medium) {
+      font-size: 4rem;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    span {
+      font-size: 120%;
+    }
   }
+}
+
+main {
+  display: block;
+  margin-top: 6rem;
 }
 
 img.img-left {
   border-radius: var(--border-radius);
   float: left;
-  margin-right: 5rem;
+  margin: 0 0 3rem 0;
+  width: 100%;
+
+  @media (min-width: $breakpoint-medium) {
+    width: revert-layer;
+    margin: 0 5rem 0 0;
+  }
 }
 
 img.img-right {
   border-radius: var(--border-radius);
   float: right;
-  margin-left: 5rem;
+  margin: 0 0 3rem 0;
+  width: 100%;
+
+  @media (min-width: $breakpoint-medium) {
+    width: revert-layer;
+    margin: 0 0 0 5rem;
+  }
 }
 
 header {
@@ -76,18 +114,91 @@ header {
   box-shadow: 0 1rem 1rem .2rem #0003;
 
   nav {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
 
-    a {
-      color: var(--foreground);
+    input {
+      position: absolute;
+      display: block;
+      width: 3.2rem;
+      height: 3.2rem;
+      margin: 0;
+      opacity: 0;
+      z-index: 2;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+    }
+
+    span {
+      display: block;
+      width: 3.2rem;
+      height: .4rem;
+      margin: .5rem 0;
+      position: relative;
+      background: #fff;
+      border-radius: .2rem;
+      z-index: 1;
+      transform-origin: center;
+      transition: background 0.5s, opacity 0.5s ease, transform 0.5s;
+    }
+
+    input:checked {
+      ~ span {
+        background: #000;
+      }
+
+      ~ span:nth-child(2) {
+        transform: rotate(45deg) translate(.65rem, .65rem);
+      }
+
+      ~ span:nth-child(3) {
+        opacity: 0;
+        transform: scale(0, 0);
+      }
+
+      ~ span:nth-child(4) {
+        transform: rotate(-45deg) translate(.55rem, -.65rem);
+      }
+
+      ~ ul {
+        transform: none;
+      }
+    }
+
+    ul {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 7rem 0rem 0rem 3rem;
+      box-sizing: border-box;
+      overflow-y: auto;
+      background: #ededed;
+      list-style-type: none;
+
+      transform-origin: 0% 0%;
+      transform: translate(0, -100%);
+      transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ul li {
+      padding-bottom: 2rem;
+      font-size: 3rem;
+    }
+
+    ul li a {
+      color: var(--accent-secondary);
       text-transform: uppercase;
-      padding: 2rem;
 
       &:hover {
-        color: var(--accent-primary);
         text-decoration: none;
       }
     }
@@ -99,8 +210,13 @@ section {
 
   section-content {
     display: block;
-    margin: 0 auto;
-    width: 100rem;
+    width: calc(100% - 6rem);
+    margin: 0 3rem;
+
+    @media (min-width: $breakpoint-large) {
+      width: 100rem;
+      margin: 0 auto;
+    }
   }
 
   h1 {
