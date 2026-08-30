@@ -147,9 +147,9 @@ header {
     }
 
     input:checked {
-      ~ span {
-        background: #000;
-      }
+      // ~ span {
+      //   background: #000;
+      // }
 
       ~ span:nth-child(2) {
         transform: rotate(45deg) translate(.65rem, .65rem);
@@ -179,7 +179,7 @@ header {
       padding: 7rem 0rem 0rem 3rem;
       box-sizing: border-box;
       overflow-y: auto;
-      background: #ededed;
+      background: var(--background);
       list-style-type: none;
 
       transform-origin: 0% 0%;
@@ -195,7 +195,7 @@ header {
     }
 
     ul li a {
-      color: var(--accent-secondary);
+      color: var(--accent-primary);
       text-transform: uppercase;
 
       &:hover {
