@@ -33,21 +33,6 @@ a {
   }
 }
 
-a.button {
-  cursor: pointer;
-  display: inline-block;
-  background-color: var(--accent-secondary);
-  border-radius: var(--border-radius);
-  color: var(--foreground);
-  text-align: center;
-  text-transform: uppercase;
-  padding: .5rem 2rem;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 site-logo {
   margin-left: 3rem;
   white-space: nowrap;
@@ -79,30 +64,6 @@ site-logo {
 main {
   display: block;
   margin-top: 6rem;
-}
-
-img.img-left {
-  border-radius: var(--border-radius);
-  float: left;
-  margin: 0 0 3rem 0;
-  width: 100%;
-
-  @media (min-width: $breakpoint-medium) {
-    width: revert-layer;
-    margin: 0 5rem 0 0;
-  }
-}
-
-img.img-right {
-  border-radius: var(--border-radius);
-  float: right;
-  margin: 0 0 3rem 0;
-  width: 100%;
-
-  @media (min-width: $breakpoint-medium) {
-    width: revert-layer;
-    margin: 0 0 0 5rem;
-  }
 }
 
 header {
@@ -264,4 +225,48 @@ footer nav {
   a {
     padding: 0 2rem;
   }
+}
+
+img.img-left {
+  border-radius: var(--border-radius);
+  float: left;
+  margin: 0 0 3rem 0;
+  width: 100%;
+
+  @media (min-width: $breakpoint-medium) {
+    width: revert-layer;
+    margin: 0 5rem 0 0;
+  }
+}
+
+img.img-right {
+  border-radius: var(--border-radius);
+  float: right;
+  margin: 0 0 3rem 0;
+  width: 100%;
+
+  @media (min-width: $breakpoint-medium) {
+    width: revert-layer;
+    margin: 0 0 0 5rem;
+  }
+}
+
+a.button {
+  cursor: pointer;
+  display: inline-block;
+  background-color: var(--accent-secondary);
+  border-radius: var(--border-radius);
+  color: var(--foreground);
+  padding: .5rem 2rem;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+a.buyButton img {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  width: 15rem;
 }
