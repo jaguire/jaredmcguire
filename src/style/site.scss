@@ -73,6 +73,7 @@ header {
   background: var(--background);;
   width: 100%;
   box-shadow: 0 1rem 1rem .2rem #0003;
+  z-index: 100;
 
   nav {
     position: fixed;
@@ -188,26 +189,6 @@ section {
     text-align: justify;
   }
 
-  &#iona {
-    img {
-      border: .2rem solid var(--foreground);
-    }
-
-    h1 {
-      color: var(--accent-tertiary);
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 8rem;
-      font-weight: normal;
-      line-height: 1;
-      text-transform: uppercase;
-      margin-bottom: 0;
-
-      &::first-letter {
-        font-size: 130%;
-      }
-    }
-  }
-
   &.inverse {
     background-color: var(--foreground);
     color: var(--background);
@@ -269,4 +250,33 @@ a.buyButton img {
   background-color: #fff;
   border-radius: var(--border-radius);
   width: 15rem;
+}
+
+#iona {
+  background: url(/images/Iona-JaredMcGuire_ebook-cover.jpg);
+  background-position: center;
+  background-size: cover;
+
+  section {
+    backdrop-filter: blur(1rem);
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  img {
+    border: .2rem solid var(--foreground);
+  }
+
+  h1 {
+    color: var(--accent-tertiary);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 8rem;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+    &::first-letter {
+      font-size: 130%;
+    }
+  }
 }
