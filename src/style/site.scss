@@ -199,11 +199,12 @@ section {
   }
 }
 
-footer nav {
+footer {
+  font-size: 80%;
   text-align: center;
   padding: 3rem;
 
-  a {
+  nav a {
     padding: 0 2rem;
   }
 }
@@ -250,6 +251,11 @@ a.buyButton img {
   background-color: #fff;
   border-radius: var(--border-radius);
   width: 15rem;
+}
+
+#terms,
+#privacy {
+  font-size: 90%;
 }
 
 #iona {
